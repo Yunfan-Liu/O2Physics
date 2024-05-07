@@ -211,7 +211,6 @@ struct HfTreeCreatorOmegacToOmegaPi {
   Produces<o2::aod::HfOmegacFulls> rowCandidateFull;
   Produces<o2::aod::HfOmegacLites> rowCandidateLite;
   Produces<o2::aod::HfOmegacEvs> rowEv; 
-  Configurable<std::vector<int>> classMl{"classMl", {0, 2}, "Indexes of BDT scores to be stored. Two indexes max."};
   Configurable<float> zPvCut{"zPvCut", 10., "Cut on absolute value of primary vertex z coordinate"};
 
   using MyTrackTable = soa::Join<aod::Tracks, aod::TrackSelection, aod::TracksExtra>;
@@ -234,9 +233,7 @@ struct HfTreeCreatorOmegacToOmegaPi {
     std::vector<float> responseOmegacBar ;
 	for (float mlProbOmegac : candidate.mlProbOmegac()) {
         responseOmegac.push_back(mlProbOmegac);
-		//std::cout<<mlProbOmegac<<"   ";
     };
-	//std::cout<<std::endl;
 	for (float mlProbOmegacBar : candidate.mlProbOmegacBar()) {
         responseOmegacBar.push_back(mlProbOmegacBar);
     };
